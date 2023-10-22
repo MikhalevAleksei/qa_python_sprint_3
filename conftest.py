@@ -7,3 +7,4 @@ from main import BooksCollector
 def collector():
     collector = BooksCollector()
     return collector
+
