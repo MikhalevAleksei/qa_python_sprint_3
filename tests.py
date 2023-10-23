@@ -30,7 +30,7 @@ class TestBooksCollector:
         genre = 'Мультфильмы'
         collector.add_new_book(name)
         collector.set_book_genre(name, genre)
-        assert collector.get_books_genre(name) == genre
+        assert collector.get_book_genre(name) == genre
 
     def test_adult_books_not_in_children_books(self, collector):
         name = 'Зомби'
