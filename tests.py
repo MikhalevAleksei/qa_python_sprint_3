@@ -36,21 +36,21 @@ class TestBooksCollector:
         name = 'Зомби'
         genre = 'Ужасы'
         collector.add_new_book(name)
-        collector.set_books_genre(name, genre)
+        collector.set_book_genre(name, genre)
         assert name not in collector.get_books_for_children()
 
     def test_get_books_with_specific_genre(self, collector):
         name = 'Зомби'
         genre = 'Ужасы'
         collector.add_new_book(name)
-        collector.set_books_genre(name, genre)
+        collector.set_book_genre(name, genre)
         assert name in collector.get_books_with_specific_genre(genre)
 
     def test_get_books_genre(self, collector):
         name = 'Зомби'
         genre = 'Ужасы'
         collector.add_new_book(name)
-        collector.set_books_genre(name, genre)
+        collector.set_book_genre(name, genre)
         assert collector.get_books_genre() == collector.books_genre
 
     def test_get_books_for_children(self, collector):
@@ -63,14 +63,16 @@ class TestBooksCollector:
     def test_add_book_in_favorite(self, collector):
         name = 'Колобок'
         collector.add_new_book(name)
-        assert len(collector.add_book_in_favorites(name)) > 0
+        collector.add_book_in_favorites(name)
+        assert len(collector.get_list_of_favorites_books()) == 1
 
     def test_delete_book_from_favorites(self, collector):
         name = 'Колобок'
         collector.add_new_book(name)
         collector.add_book_in_favorites(name)
         collector.delete_book_from_favorites(name)
-        assert len(collector.add_book_in_favorites(name)) == 0
+
+        assert len(collector.get_list_of_favorites_books()) == 0
 
     def test_get_list_of_favorites_books(self, collector):
         name = 'Колобок'
